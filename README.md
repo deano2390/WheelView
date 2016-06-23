@@ -9,7 +9,7 @@ WheelView
 
 #### layout: 
 ```xml
-<com.wangjie.wheelview.WheelView
+<uk.co.deanwild.wheelview.WheelView
         android:id="@+id/main_wv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WheelView">
+        <attr name="flowFromBottomToTop" format="boolean"/>
+        <attr name="highLightColor" format="color"/>
+
+    </declare-styleable>
+
+</resources>
