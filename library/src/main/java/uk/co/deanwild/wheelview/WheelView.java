@@ -233,8 +233,9 @@ public class WheelView extends ScrollView {
             itemHeight = getViewMeasuredHeight(tv);
 
             views.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, itemHeight * displayItemCount));
-            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) this.getLayoutParams();
-            this.setLayoutParams(new LinearLayout.LayoutParams(lp.width, itemHeight * displayItemCount));
+            ViewGroup.LayoutParams lp = this.getLayoutParams();
+            lp.height = itemHeight * displayItemCount;
+            this.setLayoutParams(lp);
         }
         return tv;
     }
