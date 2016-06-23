@@ -66,4 +66,13 @@ public class WheelDialog extends AlertDialog {
 
 
     }
+
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        String test1 = pickerYear.getSeletedItem();
+        String test2 = pickerMonth.getSeletedItem();
+        String test3 = pickerDay.getSeletedItem();
+    }
 }

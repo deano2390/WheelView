@@ -206,6 +206,7 @@ public class WheelView extends ScrollView {
                 @Override
                 public void run() {
                     fullScroll(View.FOCUS_DOWN);
+                    selectedIndex = items.size() - 2;
                     postDelayed(new Runnable() {
                         @Override
                         public void run() {
