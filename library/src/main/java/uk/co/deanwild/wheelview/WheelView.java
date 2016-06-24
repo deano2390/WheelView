@@ -354,7 +354,7 @@ public class WheelView extends ScrollView {
             for (int i = 0; i < items.size(); i++) {
                 String item = items.get(i);
                 if (value.equals(item)) {
-                    setSelectionByIndex(i);
+                    setSelectionByIndex(i - 1);
                     return;
                 }
             }
