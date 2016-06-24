@@ -38,6 +38,10 @@ public class WheelView extends ScrollView {
         }
     }
 
+    public interface OnWheelLoadedListener {
+        void onWheelLoaded();
+    }
+
     static final int SCROLL_DIRECTION_UP = 0;
     static final int SCROLL_DIRECTION_DOWN = 1;
     public static final int OFF_SET_DEFAULT = 1;
@@ -100,7 +104,10 @@ public class WheelView extends ScrollView {
         return items;
     }
 
-    public void setItems(List<String> list) {
+    public void setItems(List<String> list, OnWheelLoadedListener wheelLoadedListener) {
+
+        this.wheelLoadedListener = wheelLoadedListener;
+        
         if (null == items) {
             items = new ArrayList<String>();
         }
@@ -210,15 +217,24 @@ public class WheelView extends ScrollView {
                     postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            setVisibility(VISIBLE);
+                            loadFinished();
                         }
                     }, 100);
                 }
             });
         } else {
-            setVisibility(VISIBLE);
+            loadFinished();
         }
     }
+
+    void loadFinished() {
+        setVisibility(VISIBLE);
+        if (wheelLoadedListener != null)
+            wheelLoadedListener.onWheelLoaded();
+
+    }
+
+    OnWheelLoadedListener wheelLoadedListener;
 
     TextView createView(String item) {
         TextView tv = new TextView(context);
