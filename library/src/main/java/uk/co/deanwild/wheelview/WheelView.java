@@ -154,7 +154,7 @@ public class WheelView extends ScrollView {
                     if (remainder == 0) {
                         selectedIndex = divided + offset;
 
-                        onSeletedCallBack();
+                        onSelectedCallBack();
                     } else {
                         if (remainder > itemHeight / 2) {
                             WheelView.this.post(new Runnable() {
@@ -162,7 +162,7 @@ public class WheelView extends ScrollView {
                                 public void run() {
                                     WheelView.this.smoothScrollTo(0, initialY - remainder + itemHeight);
                                     selectedIndex = divided + offset + 1;
-                                    onSeletedCallBack();
+                                    onSelectedCallBack();
                                 }
                             });
                         } else {
@@ -171,7 +171,7 @@ public class WheelView extends ScrollView {
                                 public void run() {
                                     WheelView.this.smoothScrollTo(0, initialY - remainder);
                                     selectedIndex = divided + offset;
-                                    onSeletedCallBack();
+                                    onSelectedCallBack();
                                 }
                             });
                         }
@@ -215,7 +215,7 @@ public class WheelView extends ScrollView {
                     }, 100);
                 }
             });
-        }else{
+        } else {
             setVisibility(VISIBLE);
         }
     }
@@ -342,14 +342,26 @@ public class WheelView extends ScrollView {
     /**
      * 选中回调
      */
-    private void onSeletedCallBack() {
+    private void onSelectedCallBack() {
         if (null != onWheelViewListener) {
             onWheelViewListener.onSelected(selectedIndex, items.get(selectedIndex));
         }
 
     }
 
-    public void setSeletion(int position) {
+    public void setSelectionByValue(String value) {
+        if (items != null) {
+            for (int i = 0; i < items.size(); i++) {
+                String item = items.get(i);
+                if (value.equals(item)) {
+                    setSelectionByIndex(i);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void setSelectionByIndex(int position) {
         final int p = position;
         selectedIndex = p + offset;
         this.post(new Runnable() {
@@ -361,11 +373,11 @@ public class WheelView extends ScrollView {
 
     }
 
-    public String getSeletedItem() {
+    public String getSelectedItem() {
         return items.get(selectedIndex);
     }
 
-    public int getSeletedIndex() {
+    public int getSelectedIndex() {
         return selectedIndex - offset;
     }
 
