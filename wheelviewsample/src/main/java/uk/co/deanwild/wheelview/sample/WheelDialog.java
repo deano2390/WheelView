@@ -42,7 +42,7 @@ public class WheelDialog extends AlertDialog {
             days.add(String.valueOf(day));
         }
 
-        pickerDay.setItems(days);
+        pickerDay.setItems(days, null);
 
 
         List<String> months = new ArrayList<>();
@@ -52,7 +52,7 @@ public class WheelDialog extends AlertDialog {
             months.add(String.valueOf(month));
         }
 
-        pickerMonth.setItems(months);
+        pickerMonth.setItems(months, null);
 
 
         List<String> years = new ArrayList<>();
@@ -62,7 +62,7 @@ public class WheelDialog extends AlertDialog {
             years.add(String.valueOf(year));
         }
 
-        pickerYear.setItems(years);
+        pickerYear.setItems(years, null);
 
 
     }
