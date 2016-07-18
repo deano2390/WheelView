@@ -400,7 +400,7 @@ public class WheelView extends ScrollView {
 
     @Override
     public void fling(int velocityY) {
-        super.fling(velocityY / 3);
+        super.fling(velocityY);
     }
 
     @Override
