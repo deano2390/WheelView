@@ -58,6 +58,7 @@ public class WheelView extends ScrollView {
 
     List<String> items;
 
+    float velocityMultiplier = 1;
     int displayItemCount; // 每页显示的数量
     int selectedIndex = 1;
     int initialY;
@@ -400,7 +401,8 @@ public class WheelView extends ScrollView {
 
     @Override
     public void fling(int velocityY) {
-        super.fling(velocityY);
+        int adjustedVelocity = (int) (velocityY * velocityMultiplier);
+        super.fling(adjustedVelocity);
     }
 
     @Override
@@ -434,4 +436,11 @@ public class WheelView extends ScrollView {
         return view.getMeasuredHeight();
     }
 
+    public float getVelocityMultiplier() {
+        return velocityMultiplier;
+    }
+
+    public void setVelocityMultiplier(float velocityMultiplier) {
+        this.velocityMultiplier = velocityMultiplier;
+    }
 }
